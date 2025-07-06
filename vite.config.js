@@ -12,8 +12,8 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["icon-192.png", "icon-512.png"],
       manifest: {
-        name: "Onboarding App",
-        short_name: "Onboard",
+        name: "ART.AI Onboard",
+        short_name: "ART.AI",
         start_url: "/",
         display: "standalone",
         background_color: "#111417",

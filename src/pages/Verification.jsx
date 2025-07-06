@@ -17,7 +17,7 @@ export const Verification = () => {
 
   const verifyCode = () => {
     if (inputCode === code) {
-      navigate("/auth", {
+      navigate("/home", {
         state: { status: "success" },
       });
     } else {

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "antd"; // можно и обычный <button>
 
 const ResendEmailButton = ({ onResend }) => {
-  const [timeLeft, setTimeLeft] = useState(60); // 1 минут
+  const [timeLeft, setTimeLeft] = useState(30); // 30 секунд по умолчанию
 
   useEffect(() => {
     if (timeLeft <= 0) return;
@@ -22,7 +22,7 @@ const ResendEmailButton = ({ onResend }) => {
 
   const handleResend = () => {
     if (timeLeft == 0) {
-      setTimeLeft(180); // сбрасываем таймер на 3 минут
+      setTimeLeft(60); // сбрасываем таймер на 1 минуту
       onResend(); // вызываем переданную функцию отправки письма
     }
   };

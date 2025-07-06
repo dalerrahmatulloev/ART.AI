@@ -6,6 +6,7 @@ import Welcome from "./pages/Welcome";
 import Auth from "./pages/Auth";
 import CreateAcc from "./pages/CreateAcc";
 import { Verification } from "./pages/Verification";
+import { Home } from "./pages/Home";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -15,6 +16,7 @@ function App() {
     { path: "/auth", element: <Auth /> },
     { path: "/create-account", element: <CreateAcc /> },
     { path: "/verification", element: <Verification />},
+    { path: "/home", element: <Home /> }
   ]);
 
   useEffect(() => {

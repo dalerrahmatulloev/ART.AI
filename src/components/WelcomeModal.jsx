@@ -30,7 +30,7 @@ export const WelcomeModal = ({ img, title, description }) => {
         </h1>
         <p className="text-[#616365] text-[14px] mb-[41px]">{description}</p>
         <Link to="/auth">
-          <button className="bg-[#B6F09C] text-black font-[600] w-full h-[48px] rounded-[4px]">
+          <button className="bg-[#B6F09C] !text-black font-[600] w-full h-[48px] rounded-[4px]">
             Get Started
           </button>
         </Link>

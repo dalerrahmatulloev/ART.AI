@@ -1,3 +1,4 @@
+import { InstallPWAButton } from "../components/InstallPWAButton";
 import { WelcomeModal } from "../components/WelcomeModal";
 
 const Welcome = () => {
@@ -10,6 +11,8 @@ const Welcome = () => {
           "Enter a prompt, choose a style, and watch ART.AI bring your ideas to life!"
         }
       />
+
+      <InstallPWAButton style={{ position: "fixed", bottom: 20, right: 20 }} />
     </div>
   );
 };

@@ -2,6 +2,8 @@ import { Input } from "antd";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { message } from "antd";
+import ResendEmailButton from "../components/ResendEmailButton";
+import { SendCodeToEmail } from "../components/SendCodeToEmail";
 
 export const Verification = () => {
   const navigate = useNavigate();
@@ -15,9 +17,8 @@ export const Verification = () => {
 
   const verifyCode = () => {
     if (inputCode === code) {
-      console.log("Code verified successfully!");
       navigate("/auth", {
-        state: {status: "success"},
+        state: { status: "success" },
       });
     } else {
       console.error("Invalid code. Please try again.");
@@ -49,6 +50,19 @@ export const Verification = () => {
           value={inputCode}
           type="number"
           size="large"
+        />
+
+        <ResendEmailButton
+          onResend={() => {
+            // Generate a random 4-digit code
+            const generatedCode = Math.floor(
+              1000 + Math.random() * 9000
+            ).toString();
+            SendCodeToEmail(email, generatedCode);
+            navigate(location.pathname, {
+              state: { code: generatedCode, email: email },
+            });
+          }}
         />
       </div>
 

@@ -57,7 +57,15 @@ const Auth = () => {
             Create an Account
           </Link>
 
-          <button className="w-full py-[12px] border border-[#B6F09C] !text-[#B6F09C] rounded-[4px]">
+          <button
+            onClick={() => {
+              messageApi.open({
+                type: "error",
+                content: "Sorry, this feature is not available yet.",
+              });
+            }}
+            className="w-full py-[12px] border border-[#B6F09C] !text-[#B6F09C] rounded-[4px]"
+          >
             Login
           </button>
         </div>

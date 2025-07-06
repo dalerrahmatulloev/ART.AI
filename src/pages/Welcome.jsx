@@ -3,14 +3,6 @@ import { WelcomeModal } from "../components/WelcomeModal";
 import { Carousel } from "antd";
 
 const Welcome = () => {
-  const contentStyle = {
-    height: "160px",
-    color: "#fff",
-    lineHeight: "160px",
-    textAlign: "center",
-    background: "#364d79",
-  };
-
   return (
     <div className="">
       <Carousel autoplay  autoplaySpeed={5000}>

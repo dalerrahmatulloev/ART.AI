@@ -1,8 +1,28 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { message } from "antd";
 
 const Auth = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { status } = location.state || {};
+  const [messageApi, contextHolder] = message.useMessage();
+
+  useEffect(() => {
+    if (status === "success") {
+      messageApi.open({
+        type: "success",
+        content: "Email successfully verified!",
+      });
+
+      // 👇 Удаляем status из location.state
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  }, [status, messageApi, navigate, location.pathname]);
+
   return (
     <div className="relative h-screen w-full bg-[#111417] overflow-hidden">
+      {contextHolder}
       {/* Верхняя панель с логотипом */}
       <div className="py-[24px] flex items-center justify-center z-10 relative">
         <img src="/image/Logo.svg" className="h-[55px]" alt="Logo" />

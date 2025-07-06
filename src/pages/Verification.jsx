@@ -1,7 +1,7 @@
 import { Input } from "antd";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { message } from 'antd';
+import { message } from "antd";
 
 export const Verification = () => {
   const navigate = useNavigate();
@@ -16,11 +16,9 @@ export const Verification = () => {
   const verifyCode = () => {
     if (inputCode === code) {
       console.log("Code verified successfully!");
-      messageApi.open({
-        type: "success",
-        content: "Code verified successfully!",
+      navigate("/auth", {
+        state: {status: "success"},
       });
-      navigate("/auth")
     } else {
       console.error("Invalid code. Please try again.");
       setInputCode("");

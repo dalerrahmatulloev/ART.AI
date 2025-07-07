@@ -1,6 +1,6 @@
 import { message } from "antd";
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -12,7 +12,7 @@ export const Home = () => {
     if (status === "success") {
       messageApi.open({
         type: "success",
-        content: "Email successfully verified!"
+        content: "Email successfully verified!",
       });
 
       // 👇 Удаляем status из location.state
@@ -49,17 +49,13 @@ export const Home = () => {
         </div>
       </div>
 
-      <button
-        onClick={() => {
-          messageApi.open({
-            type: "error",
-            content: "Sorry, this feature is not available yet.",
-          });
-        }}
-        className="w-full py-[12px] text-center font-[600] bg-[#B6F09C] text-[#131619] rounded-[4px]"
-      >
-        Start Creating
-      </button>
+      <Link to="/projects">
+        <button
+          className="w-full py-[12px] text-center font-[600] bg-[#B6F09C] text-[#131619] rounded-[4px]"
+        >
+          Start Creating
+        </button>
+      </Link>
     </div>
   );
 };

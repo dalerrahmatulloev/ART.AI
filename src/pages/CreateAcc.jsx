@@ -70,7 +70,7 @@ const CreateAcc = () => {
               <input
                 type="email"
                 id="email"
-                className="placeholder-[#B6B7B8] outline-none"
+                className="placeholder-[#B6B7B8] w-full outline-none"
                 style={{ color: "#B6B7B8" }}
                 placeholder="e-Mail Address"
                 required
@@ -97,7 +97,7 @@ const CreateAcc = () => {
               <input
                 type="tel"
                 id="phone"
-                className="placeholder-[#B6B7B8] outline-none"
+                className="placeholder-[#B6B7B8] w-full outline-none"
                 style={{ color: "#B6B7B8" }}
                 placeholder="Phone Number"
                 required

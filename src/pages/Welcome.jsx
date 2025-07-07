@@ -5,7 +5,7 @@ import { Carousel } from "antd";
 const Welcome = () => {
   return (
     <div className="">
-      <Carousel autoplay  autoplaySpeed={5000}>
+      <Carousel autoplay autoplaySpeed={5000} effect="fade" >
         <WelcomeModal
           img="/image/welcome1.png"
           title={"Create artwork with AI"}

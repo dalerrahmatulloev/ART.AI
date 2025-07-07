@@ -5,17 +5,20 @@ import { SendCodeToEmail } from "../components/SendCodeToEmail";
 
 const CreateAcc = () => {
   const navigate = useNavigate();
+  const [phone, setPhone] = useState("");
   const [isChecked, setChecked] = useState(false);
   const [errorTest, setErrorTest] = useState("");
   const handlePhoneInput = (e) => {
-    e.target.value = e.target.value.replace(/[^0-9\s]/g, "");
+    let val = e.target.value.replace(/[^0-9]/g, "");
+    if (val.length > 10) val = val.slice(0, 10);
+    setPhone(val);
 
-    if (e.target.value.length > 10) {
-      e.target.value = e.target.value.slice(0, 10);
+    if (val.length >= 10) {
+      setErrorTest("");
     }
   };
 
-  const SubmitFun = (e) => {
+  const SubmitFun = async (e) => {
     e.preventDefault();
     const phone = e.target.phone.value;
     const email = e.target.email.value;
@@ -25,14 +28,18 @@ const CreateAcc = () => {
       return;
     }
 
-    // Generate a random 4-digit code
-    const generatedCode = Math.floor(1000 + Math.random() * 9000).toString();
-    SendCodeToEmail(email, generatedCode);
+    try {
+      // Generate a random 4-digit code
+      const generatedCode = Math.floor(1000 + Math.random() * 9000).toString();
+      await SendCodeToEmail(email, generatedCode);
 
-    setErrorTest("");
-    navigate("/verification", {
-      state: { code: generatedCode, email: email },
-    });
+      setErrorTest("");
+      navigate("/verification", {
+        state: { code: generatedCode, email: email },
+      });
+    } catch (error) {
+      setErrorTest("Failed to send code. Please try again.");
+    }
   };
 
   return (
@@ -94,7 +101,8 @@ const CreateAcc = () => {
                 style={{ color: "#B6B7B8" }}
                 placeholder="Phone Number"
                 required
-                onInput={handlePhoneInput}
+                value={phone}
+                onChange={handlePhoneInput}
               />
             </div>
 

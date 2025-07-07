@@ -11,12 +11,13 @@ export const Verification = () => {
   const { code, email } = location.state || {};
   const [inputCode, setInputCode] = useState("");
   const [messageApi, contextHolder] = message.useMessage();
+  const [currentCode, setCurrentCode] = useState(code);
   const onChange = (text) => {
     setInputCode(text);
   };
 
   const verifyCode = () => {
-    if (inputCode === code) {
+    if (inputCode === currentCode) {
       navigate("/home", {
         state: { status: "success" },
       });
@@ -28,6 +29,17 @@ export const Verification = () => {
         content: "Invalid code. Please try again.",
       });
     }
+  };
+
+  const resendCode = async () => {
+    // Generate a random 4-digit code
+    const generatedCode = Math.floor(1000 + Math.random() * 9000).toString();
+    await SendCodeToEmail(email, generatedCode);
+    setCurrentCode(generatedCode);
+    messageApi.open({
+      type: "success",
+      content: "Code resent successfully!",
+    });
   };
 
   return (
@@ -54,14 +66,7 @@ export const Verification = () => {
 
         <ResendEmailButton
           onResend={() => {
-            // Generate a random 4-digit code
-            const generatedCode = Math.floor(
-              1000 + Math.random() * 9000
-            ).toString();
-            SendCodeToEmail(email, generatedCode);
-            navigate(location.pathname, {
-              state: { code: generatedCode, email: email },
-            });
+            resendCode();
           }}
         />
       </div>
@@ -76,7 +81,7 @@ export const Verification = () => {
               : "bg-[#B6F09C] text-[#131619] opacity-50 cursor-not-allowed"
           }`}
       >
-        Create Account
+        Confirm
       </button>
     </div>
   );

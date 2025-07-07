@@ -3,8 +3,18 @@ import { Link } from "react-router-dom";
 export const WelcomeModal = ({ img, title, description }) => {
   return (
     <div className="w-full h-screen bg-[#111417] relative">
-      {/* Фоновое изображение */}
-      <img className="absolute top-0 left-0 w-full" src={img} alt="image" />
+      <div className="relative w-full h-full">
+        {/* Фоновое изображение */}
+        <img className="w-full" src={img} alt="image" />
+
+        {/* Градиентный оверлей */}
+        <div
+          className="absolute bottom-0 h-[222px] w-full transition-all duration-700"
+          style={{
+            background: "linear-gradient(180deg, #00000000 0%, #131619 100%)",
+          }}
+        ></div>
+      </div>
 
       {/* Крестик для выхода */}
       <Link to="/auth">
@@ -15,16 +25,8 @@ export const WelcomeModal = ({ img, title, description }) => {
         />
       </Link>
 
-      {/* Градиентный оверлей */}
-      <div
-        className="absolute top-[305px] h-[222px] w-full"
-        style={{
-          background: "linear-gradient(180deg, #00000000 0%, #131619 100%)",
-        }}
-      ></div>
-
       {/* Контент */}
-      <div className="absolute bottom-0 z-10 px-[24px] pb-[24px] w-full text-center">
+      <div className="absolute bottom-0 z-10 px-[24px] pb-[24px] w-full max-w-[500px] mx-auto text-center">
         <h1 className="text-[#CEF5BD] text-[48px] leading-[48px] font-[600] mb-[14px]">
           {title}
         </h1>

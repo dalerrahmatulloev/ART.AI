@@ -14,7 +14,7 @@ const Auth = () => {
 
       {/* Фоновое изображение */}
       <img
-        className="absolute top-[101px] left-[0] overflow-hidden h-screen w-full"
+        className="absolute top-[101px] left-0 w-full h-auto max-h-[calc(100vh-60px)] object-cover"
         src="/image/cat.png"
         alt=""
       />

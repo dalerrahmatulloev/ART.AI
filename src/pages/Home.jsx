@@ -3,16 +3,16 @@ import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export const Home = () => {
+  const [messageApi, contextHolder] = message.useMessage();
   const location = useLocation();
   const navigate = useNavigate();
   const { status } = location.state || {};
-  const [messageApi, contextHolder] = message.useMessage();
 
   useEffect(() => {
     if (status === "success") {
       messageApi.open({
         type: "success",
-        content: "Email successfully verified!",
+        content: "Email successfully verified!"
       });
 
       // 👇 Удаляем status из location.state
@@ -58,7 +58,7 @@ export const Home = () => {
         }}
         className="w-full py-[12px] text-center font-[600] bg-[#B6F09C] text-[#131619] rounded-[4px]"
       >
-        Create
+        Start Creating
       </button>
     </div>
   );

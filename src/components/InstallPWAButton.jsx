@@ -12,7 +12,6 @@ export function InstallPWAButton() {
     }
 
     window.addEventListener("beforeinstallprompt", handler);
-
     return () => window.removeEventListener("beforeinstallprompt", handler);
   }, []);
 
@@ -20,13 +19,7 @@ export function InstallPWAButton() {
     if (!deferredPrompt) return;
 
     deferredPrompt.prompt();
-    const choiceResult = await deferredPrompt.userChoice;
-
-    if (choiceResult.outcome === "accepted") {
-      console.log("User accepted the install prompt");
-    } else {
-      console.log("User dismissed the install prompt");
-    }
+    await deferredPrompt.userChoice;
 
     setDeferredPrompt(null);
     setIsVisible(false);
@@ -37,19 +30,9 @@ export function InstallPWAButton() {
   return (
     <button
       onClick={installApp}
-      style={{
-        position: "fixed",
-        bottom: 20,
-        right: 20,
-        padding: "10px 20px",
-        backgroundColor: "#3b82f6",
-        color: "white",
-        border: "none",
-        borderRadius: "5px",
-        cursor: "pointer",
-      }}
+      className="fixed top-[15px] left-[20px] px-[20px] py-[12px] bg-[#B6F09C] !text-[#131619] font-[600] text-[14px] rounded-[4px] shadow-md z-50"
     >
-      Установить приложение
+      Download ART.AI
     </button>
   );
 }
